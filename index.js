@@ -2,7 +2,7 @@
 //const generateMarkdown = require('./utils/generateMarkdown');
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { writeFile, copyFile } = require('./utils/generateMarkdown');
+const { writeFile } = require('./utils/generateMarkdown');
 
 //Create an array of questions for user input
 //asking for title of project
@@ -35,20 +35,6 @@ const promptUser = () => {
         }
     }
 }, 
-//asking for a table of contents
-{
-    type: 'input',
-    message: 'Table of contents.',
-    name: 'table',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please provide a table of contents.');
-            return false;
-        }
-    }
-}, 
 //asking for installation process
 {
     type: 'input',
@@ -63,6 +49,20 @@ const promptUser = () => {
         }
     }
 }, 
+//asking for contribution
+{
+    type: 'input',
+    message: 'Please provide steps for contribution to this project.',
+    name: 'contribute',
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please provide a description of how to contribute.');
+            return false;
+        }
+    }
+}, 
 //asking for instructions for use
 {
     type: 'input',
@@ -73,6 +73,20 @@ const promptUser = () => {
             return true;
         } else {
             console.log('Please provide instructions and examples for use.');
+            return false;
+        }
+    }
+}, 
+//asking for tests
+{
+    type: 'input',
+    message: 'Please enter testing guidelines.',
+    name: 'testing',
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please provide a description of the testing guidelines.');
             return false;
         }
     }
@@ -111,7 +125,7 @@ const promptUser = () => {
             return false;
         }
     }
-}, 
+}
 ]);
 }
 

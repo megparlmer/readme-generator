@@ -34,16 +34,8 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (data.license === 'BSD') {
-    data.licenseSection = 'BSD';
-  }
-  if (data.license === 'MIT') {
-    data.licenseSection = 'MIT';
-  }
-  if (data.license === 'GPL') {
-    data.licenseSection = 'GPL';
-  } else {
-    return '';
+  if (!data.license) {
+    '';
   }
 }
 
@@ -51,8 +43,14 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `# ${data.title}
 
+  ##License
+  ${data.license}
+
   ##Table of Contents
   - [Lisence](#license)
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
 
   ##Description
   ${data.description}
@@ -62,6 +60,15 @@ function generateMarkdown(data) {
 
   ##Usage
   ${data.usage}
+
+  ##Tests
+  ${data.testing}
+
+  ##Contribute
+  ${data.contribute}
+
+  ## Questions
+  Any questions? Reach out at ${data.email}
 `;
 }
 
